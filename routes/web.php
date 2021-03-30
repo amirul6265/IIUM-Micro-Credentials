@@ -19,7 +19,7 @@ use App\Http\Controllers\EnrollController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 /* AUTH */
