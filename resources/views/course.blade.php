@@ -49,7 +49,7 @@
                 </p>     
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" onclick="location.href = '/{{$data->id}}'" class="btn btn-sm btn-outline-secondary">Enroll</button> 
+                  <button type="button" onclick="location.href = '{{ url('/' . $data->id) }}'" class="btn btn-sm btn-outline-secondary">Enroll</button> 
                 </div>
               </div>
             </div>

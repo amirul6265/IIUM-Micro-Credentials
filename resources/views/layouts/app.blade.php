@@ -44,31 +44,31 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="/aikol">
+                                    <a class="dropdown-item" href="{{ url('/aikol') }}">
                                         AIKOL
                                     </a>
-                                    <a class="dropdown-item" href="/kirkhs">
+                                    <a class="dropdown-item" href="{{ url('/kirkhs') }}">
                                         KIRKHS
                                     </a>
-                                    <a class="dropdown-item" href="/kaed">
+                                    <a class="dropdown-item" href="{{ url('/kaed') }}">
                                         KAED
                                     </a>
-                                    <a class="dropdown-item" href="/kenms">
+                                    <a class="dropdown-item" href="{{ url('/kenms') }}">
                                         KENMS
                                     </a>
-                                    <a class="dropdown-item" href="/kict">
+                                    <a class="dropdown-item" href="{{ url('/kict') }}">
                                         KICT
                                     </a>
-                                    <a class="dropdown-item" href="/koed">
+                                    <a class="dropdown-item" href="{{ url('/koed') }}">
                                         KOED
                                     </a>
-                                    <a class="dropdown-item" href="/koe">
+                                    <a class="dropdown-item" href="{{ url('/koe') }}">
                                         KOE
                                     </a>
                                 </div>
                             </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/all">Courses</a>
+                            <a class="nav-link" href="{{ url('/all') }}">Courses</a>
                         </li>
 
                     </ul>

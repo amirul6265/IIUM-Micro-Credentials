@@ -80,7 +80,7 @@
               <div class="card-body bg-light">
                 <h5 class="card-title">{{$data->fullname}}</h5>
                 <p class="card-text">{{$data->idnumber}}</p>
-                <a class="card-link stretched-link" href="/{{$data->id}}"></a>
+                <a class="card-link stretched-link" href="{{ url('/' . $data->id) }}"></a>
               </div>
           </div>
         </div>

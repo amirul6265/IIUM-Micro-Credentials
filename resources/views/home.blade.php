@@ -74,23 +74,23 @@
         <div class="col-md-12" id="list_kulliyyah">
           <h2>List of Kulliyyah</h2>
           <div class="container">
-            <a href="#" class="btn btn-warning btn-lg">Ahmad Ibrahim Kulliyyah of Laws</a>
-            <a href="#" class="btn btn-warning btn-lg">Kulliyyah of Architecture and Environmental Design </a>
-            <a href="#" class="btn btn-warning btn-lg">Kulliyyah of Economics and Management Sciences</a>
-            <a href="#" class="btn btn-warning btn-lg">Kulliyyah of Education</a>
+            <a href="{{ url('/aikol') }}" class="btn btn-warning btn-lg">Ahmad Ibrahim Kulliyyah of Laws</a>
+            <a href="{{ url('/kaed') }}" class="btn btn-warning btn-lg">Kulliyyah of Architecture and Environmental Design </a>
+            <a href="{{ url('/kenms') }}" class="btn btn-warning btn-lg">Kulliyyah of Economics and Management Sciences</a>
+            <a href="{{ url('/koed') }}" class="btn btn-warning btn-lg">Kulliyyah of Education</a>
             <a href="{{ url('/koe') }}" class="btn btn-warning btn-lg">Kulliyyah of Engineering</a>
             <a href="{{ url('/kict') }}" class="btn btn-warning btn-lg">Kulliyyah of Information and Communication Technology</a>
-            <a href="#" class="btn btn-warning btn-lg">Kulliyyah of Islamic Revealed Knowledge and Human Sciences</a>
+            <a href="{{ url('/kirkhs') }}" class="btn btn-warning btn-lg">Kulliyyah of Islamic Revealed Knowledge and Human Sciences</a>
           </div>
         </div>
         <hr class="featurette-divider">
         <!-- Three columns of text below the carousel -->
-        <div class="row-hots" id="course_categories">
+        <div class="row" id="course_categories">
           @foreach($hots as $key => $data)
           <div class="col-lg-4">
             <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
             <h2>{{$data->fullname}}</h2>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+            <p><a class="btn btn-secondary" href="{{ url('/' . $data->id) }}" role="button">View details &raquo;</a></p>
           </div>
           @endforeach
         </div>
