@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProgrammesController;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\AddController;
+use App\Http\Controllers\EnrolledCoursesController;
+use App\Http\Controllers\EnrollController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +29,10 @@ Route::apiResource("listofcourses",CoursesController::class);
 
 Route::get('/listofcourses', [CoursesController::class, 'index']);
 Route::post('/add',[AddController::class,'add']);
+
+Route::get('/programmelist', [ProgrammesController::class, 'index']);
+Route::get('/courselist', [CoursesController::class, 'index']);
+Route::get('/enrolllist', [EnrollController::class, 'index']);
+
+Route::post('/test3', [EnrolledCoursesController::class, 'doGet']);
+Route::post('/test4', [EnrolledCoursesController::class, 'doPost']);

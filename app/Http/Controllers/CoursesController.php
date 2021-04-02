@@ -15,89 +15,45 @@ class CoursesController extends Controller
      */
     public function index()
     {
+        $programmetitle = DB::table('mdl_course_categories')
+            ->select('description')
+            ->where('name','=', $data_categoryname)
+            ->get();    
         $course = DB::table('mdl_course')
-        ->select('id', 'category','summary','fullname','shortname')
-        ->get();
-        
-        return response()->json($course);
+            ->join('mdl_course_categories', 'mdl_course.category', '=', 'mdl_course_categories.id')
+            ->join('course_image', 'mdl_course.id', '=', 'course_image.courseid')
+            ->select('mdl_course.id', 'mdl_course.category','mdl_course.summary','mdl_course.fullname','mdl_course.idnumber', 'course_image.imagesrc', 'mdl_course_categories.name')
+            ->where('category','=', $data_categorynumber)
+            ->get();     
+        return view('course', ['course' => $course])
+            ->with('programmetitle', $programmetitle);
     }
 
-    function view()
-    {    $course = DB::table('mdl_course')
-            ->select('id', 'category','summary','fullname','shortname')
-            ->get();        
-        return view('bcscourse', ['course' => $course]);
-    }
-
-    /* KICT */
-
-    function bcsview()
+    function allview()
     {    $course = DB::table('mdl_course')
             ->join('mdl_course_categories', 'mdl_course.category', '=', 'mdl_course_categories.id')
             ->join('course_image', 'mdl_course.id', '=', 'course_image.courseid')
             ->select('mdl_course.id', 'mdl_course.category','mdl_course.summary','mdl_course.fullname','mdl_course.idnumber', 'course_image.imagesrc')
-            ->where('category','=','4')
-            ->get();
-            $programme = DB::table('mdl_course_categories')
-            ->select('description')->where('name','=','bcs')
-            ->get();         
-        return view('course', ['course' => $course])->with('programme', $programme);
+            ->get();       
+        return view('allcourses', ['course' => $course]);
     }
-
-    function bitview()
-    {    $course = DB::table('mdl_course')
+    
+    function eachcoursesview($data_categoryname, $data_categorynumber)
+    {
+        $programmetitle = DB::table('mdl_course_categories')
+            ->select('description')
+            ->where('name','=', $data_categoryname)
+            ->get();    
+        $course = DB::table('mdl_course')
             ->join('mdl_course_categories', 'mdl_course.category', '=', 'mdl_course_categories.id')
             ->join('course_image', 'mdl_course.id', '=', 'course_image.courseid')
-            ->select('mdl_course.id', 'mdl_course.category','mdl_course.summary','mdl_course.fullname','mdl_course.idnumber', 'course_image.imagesrc')
-            ->where('category','=','5')
-            ->get();        
-            $programme = DB::table('mdl_course_categories')
-            ->select('description')->where('name','=','bit')
-            ->get();         
-        return view('course', ['course' => $course])->with('programme', $programme);
+            ->select('mdl_course.id', 'mdl_course.category','mdl_course.summary','mdl_course.fullname','mdl_course.idnumber', 'course_image.imagesrc', 'mdl_course_categories.name')
+            ->where('category','=', $data_categorynumber)
+            ->get();     
+        return view('course', ['course' => $course])
+            ->with('programmetitle', $programmetitle);
     }
-
-    /* KOE */
-
-    function btenview()
-    {    $course = DB::table('mdl_course')
-            ->join('mdl_course_categories', 'mdl_course.category', '=', 'mdl_course_categories.id')
-            ->join('course_image', 'mdl_course.id', '=', 'course_image.courseid')
-            ->select('mdl_course.id', 'mdl_course.category','mdl_course.summary','mdl_course.fullname','mdl_course.idnumber', 'course_image.imagesrc')
-            ->where('category','=','6')
-            ->get();        
-            $programme = DB::table('mdl_course_categories')
-            ->select('description')->where('name','=','bten')
-            ->get();         
-        return view('course', ['course' => $course])->with('programme', $programme);
-    }
-
-    function mechview()
-    {    $course = DB::table('mdl_course')
-            ->join('mdl_course_categories', 'mdl_course.category', '=', 'mdl_course_categories.id')
-            ->join('course_image', 'mdl_course.id', '=', 'course_image.courseid')
-            ->select('mdl_course.id', 'mdl_course.category','mdl_course.summary','mdl_course.fullname','mdl_course.idnumber', 'course_image.imagesrc')
-            ->where('category','=','7')
-            ->get();        
-            $programme = DB::table('mdl_course_categories')
-            ->select('description')->where('name','=','mech')
-            ->get();         
-        return view('course', ['course' => $course])->with('programme', $programme);
-    }
-
-    function mcteview()
-    {    $course = DB::table('mdl_course')
-            ->join('mdl_course_categories', 'mdl_course.category', '=', 'mdl_course_categories.id')
-            ->join('course_image', 'mdl_course.id', '=', 'course_image.courseid')
-            ->select('mdl_course.id', 'mdl_course.category','mdl_course.summary','mdl_course.fullname','mdl_course.idnumber', 'course_image.imagesrc')
-            ->where('category','=','8')
-            ->get();        
-            $programme = DB::table('mdl_course_categories')
-            ->select('description')->where('name','=','mcte')
-            ->get();         
-        return view('course', ['course' => $course])->with('programme', $programme);
-    }
-
+    
     /**
      * Show the form for creating a new resource.
      *

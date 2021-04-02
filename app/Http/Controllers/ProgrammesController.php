@@ -23,26 +23,116 @@ class ProgrammesController extends Controller
     }
 
     function kictview()
-    {    $programme = DB::table('mdl_course_categories')
-        ->select('name','description','path')->where('parent','=','2')
-        ->get();   
-        $kulliyyah = DB::table('mdl_course_categories')
-        ->join('category_image', 'mdl_course_categories.id', '=', 'category_image.categoryid')
-        ->select('category_image.imagesrc', 'mdl_course_categories.description')->where('name','=','kict')
-        ->get();   
-        return view('programme')->with('programme', $programme)->with('kulliyyah', $kulliyyah);
+    {   
+        $getkulliyyah = DB::table('mdl_course_categories')
+            ->join('category_image', 'mdl_course_categories.id', '=', 'category_image.categoryid')
+            ->select('category_image.imagesrc', 'mdl_course_categories.description')
+            ->where('name','=','kict')
+            ->get();
+        $getprogramme = DB::table('mdl_course_categories')
+            ->select('id','name','description')
+            ->where('parent','=','2')
+            ->get();
+        return view('programme') //blade_name
+            ->with('kulliyyah', $getkulliyyah)
+            ->with('programme', $getprogramme);
     }
 
     function koeview()
-    {    $programme = DB::table('mdl_course_categories')
-        ->select('name','description','path')->where('parent','=','3')
-        ->get();   
-        $kulliyyah = DB::table('mdl_course_categories')
-        ->join('category_image', 'mdl_course_categories.id', '=', 'category_image.categoryid')
-        ->select('category_image.imagesrc', 'mdl_course_categories.description')->where('name','=','koe')
-        ->get(); 
-        return view('programme')->with('programme', $programme)->with('kulliyyah', $kulliyyah);
+    {   
+        $getkulliyyah = DB::table('mdl_course_categories')
+            ->join('category_image', 'mdl_course_categories.id', '=', 'category_image.categoryid')
+            ->select('category_image.imagesrc', 'mdl_course_categories.description')
+            ->where('name','=','koe')
+            ->get();
+        $getprogramme = DB::table('mdl_course_categories')
+            ->select('id','name','description')
+            ->where('parent','=','3')
+            ->get();
+        return view('programme') //blade_name
+            ->with('kulliyyah', $getkulliyyah)
+            ->with('programme', $getprogramme);
     }
+
+    // function kenms()
+    // {   
+    //     $getkulliyyah = DB::table('mdl_course_categories')
+    //         ->join('category_image', 'mdl_course_categories.id', '=', 'category_image.categoryid')
+    //         ->select('category_image.imagesrc', 'mdl_course_categories.description')
+    //         ->where('name','=','kict')
+    //         ->get();
+    //     $getprogramme = DB::table('mdl_course_categories')
+    //         ->select('id','name','description')
+    //         ->where('parent','=','2')
+    //         ->get();
+    //     return view('programme') //blade_name
+    //         ->with('kulliyyah', $getkulliyyah)
+    //         ->with('programme', $getprogramme);
+    // }
+
+    // function aikol()
+    // {   
+    //     $getkulliyyah = DB::table('mdl_course_categories')
+    //         ->join('category_image', 'mdl_course_categories.id', '=', 'category_image.categoryid')
+    //         ->select('category_image.imagesrc', 'mdl_course_categories.description')
+    //         ->where('name','=','kict')
+    //         ->get();
+    //     $getprogramme = DB::table('mdl_course_categories')
+    //         ->select('id','name','description')
+    //         ->where('parent','=','2')
+    //         ->get();
+    //     return view('programme') //blade_name
+    //         ->with('kulliyyah', $getkulliyyah)
+    //         ->with('programme', $getprogramme);
+    // }
+
+    // function kaed()
+    // {   
+    //     $getkulliyyah = DB::table('mdl_course_categories')
+    //         ->join('category_image', 'mdl_course_categories.id', '=', 'category_image.categoryid')
+    //         ->select('category_image.imagesrc', 'mdl_course_categories.description')
+    //         ->where('name','=','kict')
+    //         ->get();
+    //     $getprogramme = DB::table('mdl_course_categories')
+    //         ->select('id','name','description')
+    //         ->where('parent','=','2')
+    //         ->get();
+    //     return view('programme') //blade_name
+    //         ->with('kulliyyah', $getkulliyyah)
+    //         ->with('programme', $getprogramme);
+    // }
+
+    // function koed()
+    // {   
+    //     $getkulliyyah = DB::table('mdl_course_categories')
+    //         ->join('category_image', 'mdl_course_categories.id', '=', 'category_image.categoryid')
+    //         ->select('category_image.imagesrc', 'mdl_course_categories.description')
+    //         ->where('name','=','kict')
+    //         ->get();
+    //     $getprogramme = DB::table('mdl_course_categories')
+    //         ->select('id','name','description')
+    //         ->where('parent','=','2')
+    //         ->get();
+    //     return view('programme') //blade_name
+    //         ->with('kulliyyah', $getkulliyyah)
+    //         ->with('programme', $getprogramme);
+    // }
+
+    // function kirkhs()
+    // {   
+    //     $getkulliyyah = DB::table('mdl_course_categories')
+    //         ->join('category_image', 'mdl_course_categories.id', '=', 'category_image.categoryid')
+    //         ->select('category_image.imagesrc', 'mdl_course_categories.description')
+    //         ->where('name','=','kict')
+    //         ->get();
+    //     $getprogramme = DB::table('mdl_course_categories')
+    //         ->select('id','name','description')
+    //         ->where('parent','=','2')
+    //         ->get();
+    //     return view('programme') //blade_name
+    //         ->with('kulliyyah', $getkulliyyah)
+    //         ->with('programme', $getprogramme);
+    // }
 
     /**
      * Show the form for creating a new resource.

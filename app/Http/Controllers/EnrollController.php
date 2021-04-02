@@ -16,46 +16,28 @@ class EnrollController extends Controller
     public function index()
     {
         $course = DB::table('mdl_course')
-        ->join('course_image', 'mdl_course.id', '=', 'course_image.courseid')
-        ->select('mdl_course.id','mdl_course.fullname','mdl_course.idnumber','mdl_course.summary','mdl_course.startdate','mdl_course.enddate', 'course_image.imagesrc')
-        ->where('mdl_course.id','=','3')
-        ->get();
+            ->join('course_image', 'mdl_course.id', '=', 'course_image.courseid')
+            ->select('mdl_course.id','mdl_course.fullname','mdl_course.idnumber','mdl_course.summary','mdl_course.startdate','mdl_course.enddate', 'course_image.imagesrc')
+            ->where('mdl_course.id','=', $data_courseid)
+            ->get();
         return response()->json($course);
     }
 
-    function view()
-    {    $course = DB::table('mdl_course')
-        ->join('course_image', 'mdl_course.id', '=', 'course_image.courseid')
-        ->select('mdl_course.id','mdl_course.fullname','mdl_course.idnumber','mdl_course.summary','mdl_course.startdate','mdl_course.enddate', 'course_image.imagesrc')
-        ->where('mdl_course.id','=', Courses::course()->id)
-        ->get();
-        return view('enroll', ['course' => $course]);
-    }
+    // function view()
+    // {    $course = DB::table('mdl_course')
+    //     ->join('course_image', 'mdl_course.id', '=', 'course_image.courseid')
+    //     ->select('mdl_course.id','mdl_course.fullname','mdl_course.idnumber','mdl_course.summary','mdl_course.startdate','mdl_course.enddate', 'course_image.imagesrc')
+    //     ->where('mdl_course.id','=', Courses::course()->id)
+    //     ->get();
+    //     return view('enroll', ['course' => $course]);
+    // }
 
-    function osview()
+    function courseview($data_courseid)
     {    $course = DB::table('mdl_course')
-        ->join('course_image', 'mdl_course.id', '=', 'course_image.courseid')
-        ->select('mdl_course.id','mdl_course.fullname','mdl_course.idnumber','mdl_course.summary','mdl_course.startdate','mdl_course.enddate', 'course_image.imagesrc')
-        ->where('mdl_course.id','=','3')
-        ->get();
-        return view('enroll', ['course' => $course]);
-    }
-
-    function dsview()
-    {    $course = DB::table('mdl_course')
-        ->join('course_image', 'mdl_course.id', '=', 'course_image.courseid')
-        ->select('mdl_course.id','mdl_course.fullname','mdl_course.idnumber','mdl_course.summary','mdl_course.startdate','mdl_course.enddate', 'course_image.imagesrc')
-        ->where('mdl_course.id','=','4')
-        ->get();
-        return view('enroll', ['course' => $course]);
-    }
-
-    function mlview()
-    {    $course = DB::table('mdl_course')
-        ->join('course_image', 'mdl_course.id', '=', 'course_image.courseid')
-        ->select('mdl_course.id','mdl_course.fullname','mdl_course.idnumber','mdl_course.summary','mdl_course.startdate','mdl_course.enddate', 'course_image.imagesrc')
-        ->where('mdl_course.id','=','5')
-        ->get();
+            ->join('course_image', 'mdl_course.id', '=', 'course_image.courseid')
+            ->select('mdl_course.id','mdl_course.fullname','mdl_course.idnumber','mdl_course.summary','mdl_course.startdate','mdl_course.enddate', 'course_image.imagesrc')
+            ->where('mdl_course.id','=', $data_courseid)
+            ->get();
         return view('enroll', ['course' => $course]);
     }
 

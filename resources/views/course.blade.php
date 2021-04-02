@@ -26,7 +26,7 @@
   <section class="jumbotron text-center">
     <div class="container">
       <h1>
-        @foreach($programme as $key => $data)
+        @foreach($programmetitle as $key => $data)
           {{$data->description}}
         @endforeach
       </h1>
@@ -49,7 +49,7 @@
                 </p>     
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" onclick="location.href = '/enroll/{{$data->id}}'" class="btn btn-sm btn-outline-secondary">Enroll</button> 
+                  <button type="button" onclick="location.href = '/{{$data->id}}'" class="btn btn-sm btn-outline-secondary">Enroll</button> 
                 </div>
               </div>
             </div>

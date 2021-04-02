@@ -189,9 +189,8 @@ footer p {
             <label>Course Name:</label><h2>{{$data->fullname}}</h2>
             <label>Course Code:</label><h2>{{$data->idnumber}}</h2>
             <label>Date:</label><h2>{{$data->startdate}} - {{$data->enddate}}</h2>
-            <label>Summary:</label><h2>Summary: {{$data->summary}}</h2>
+            <label>Summary:</label><h2>{{$data->summary}}</h2>
             <p><a class="btn btn-secondary" role="button" onclick="openForm()">Enroll</a></p>
-          
           @endforeach
         </div>
 
@@ -216,7 +215,7 @@ footer p {
                     </label>
                   <input type="text" id="enrolid" placeholder="Code:31" name="enrolid" required>
                   <button type="submit" class="btn" id="btnid">Submit</button>
-                  <button type="button" class="btn cancel" onclick="closeForm()">Exit</button>
+                  <button type="button" class="btn cancel" onclick="closeForm()">Cancel</button>
                 </div>
                 </form>
               </div>
